@@ -9,7 +9,14 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
+  testing: {
+    client: 'sqlite3',
+    connection: {
+      filename: './data/test.db3',
+    },
+    useNullAsDefault: true,
 
+  },
 
   production: {
     client: 'postgresql',
