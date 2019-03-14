@@ -13,8 +13,21 @@ describe('GET /', () => {
         .then(res => {
             expect(res.status).toBe(200);
         })
+        
     })
+    it('should return JSON',  () => {
+            return request(server).get('/')
+      
+            .then(res => {
+                expect(res.type).toBe('application/json');
+            })
+          });
 })
+
+
+
+
+
 
 
 
