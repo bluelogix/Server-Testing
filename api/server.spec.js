@@ -1,5 +1,6 @@
 const request = require('supertest');
 const server = require('./server.js');
+const db = require('../data/dbConfig.js');
 
 describe('server.js', () => {
     it('should grab testing env', () => {
@@ -24,6 +25,30 @@ describe('GET /', () => {
           });
 })
 
+describe('POST /api/dogs', () => {
+    it('should return 400 status', () => {
+        const body = {name: ''}
+        return request(server)
+        .post('/api/dogs')
+        .send(body)
+        .then(res => {
+            expect(res.status).toBe(400);
+          });
+    })
+
+    it('should return 201 status', () => {
+        const body = {name: 'something'}
+        return request(server)
+        .post('/api/dogs')
+        .send(body)
+        .then(res => {
+            expect(res.status).toBe(201);
+          });
+    })
+
+
+
+})
 
 
 

@@ -1,5 +1,5 @@
 const express = require('express');
-
+const db = require('../data/dbConfig.js');
 const server = express();
 
 server.use(express.json());
@@ -12,12 +12,19 @@ server.get('/',  (req, res) => {
 
 //POST DOGS
 
-server.post('/api/dogs', () => {
-  const { name } = req.body;
+server.post('/api/dogs', (req, res) => {
+  const { name } = req.body
 
-  res.status(200).json({ message: 'Added new dog!'})
- 
+  if(!name) {
+    res.status(400).json({error: 'did not work'})
+   
+  } else {
+     db.insert(name)
+    res.status(201).json({ message: 'working'})
+  }
 })
+    
+
 
 
 module.exports = server;
