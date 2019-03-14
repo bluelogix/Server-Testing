@@ -5,7 +5,7 @@ module.exports = {
     remove
 }
 
-function insert(user) {
+function insert(dog) {
     return db('dogs')
       .insert(dog)
   }
