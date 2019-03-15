@@ -46,11 +46,29 @@ describe('POST /api/dogs', () => {
           });
     })
 
+})
+
+describe('Delete /api/dogs', () => {
+    it('should return truthy', () => {
+      
+        return request(server)
+        .delete('/api/dogs/:id')
+        .then(res => {
+            expect(res.status).toBeTruthy();
+          });
+    })
+
+    it('should return 404', () => {
+        return request(server)
+        .delete('/api/dogs/:id')
+        .then(res => {
+            expect(res.status).toBe(404)
+        })
+        
+    })
 
 
 })
-
-
 
 
 
